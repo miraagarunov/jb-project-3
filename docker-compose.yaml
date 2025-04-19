@@ -1,39 +1,47 @@
 services:
   database:
     container_name: sn-compose-database
+    build:
+      context: ./database
+      dockerfile: Dockerfile
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-      - MYSQL_DATABASE=vacations_store
-      - MYSQL_TCP_PORT=3306
+      MYSQL_ALLOW_EMPTY_PASSWORD: "1"
+      MYSQL_DATABASE: "vacations_store"
+      MYSQL_TCP_PORT: "3306"
     ports:
       - "3306:3306"
-    build: ./database
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 1m30s
+      interval: 90s
       timeout: 30s
       retries: 5
       start_period: 60s
 
   backend:
     container_name: sn-compose-backend
-    ports:
-      - 3000:3000
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     environment:
-      - NODE_ENV=compose
-    build: ./backend
+      NODE_ENV: "compose"
+    ports:
+      - "3000:3000"
     depends_on:
       database:
         condition: service_healthy
 
   frontend:
     container_name: sn-compose-frontend
+    build:
+      context: . # ← send the *entire* repo
+      dockerfile: frontend/Dockerfile
     ports:
-      - 5173:80
-    build: ./frontend
+      - "5173:80"
 
   io:
     container_name: sn-compose-io
-    build: ./io
+    build:
+      context: ./io
+      dockerfile: Dockerfile
     ports:
       - "3003:3003"
