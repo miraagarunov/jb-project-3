@@ -27,43 +27,6 @@ export async function getAllVacations(
   }
 }
 
-// export async function createVacation(
-//   req: Request<
-//     {},
-//     {},
-//     {
-//       destination: string;
-//       vacationDestination: string;
-//       startingDate: Date;
-//       endingDate: Date;
-//       price: number;
-//       imageUrl?: string;
-//     }
-//   >,
-//   res: Response,
-//   next: NextFunction
-// ) {
-//   try {
-//     let createParams = { ...req.body };
-
-//     if (req.imageUrl) {
-//       const { imageUrl } = req;
-//       createParams = { ...createParams, imageUrl };
-//     }
-
-//     const newVacation = await Vacation.create(createParams);
-//     res.json(newVacation);
-
-//     socket.emit(SocketMessages.ADD_VACATION, {
-//       from: req.headers["x-client-id"],
-//       data: newVacation,
-//     });
-//   } catch (e) {
-//     console.log("vacations er", e);
-//     next(e);
-//   }
-// }
-
 export async function createVacation(
   req: Request<
     {},

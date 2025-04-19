@@ -108,38 +108,6 @@ export default function EditVacation(): JSX.Element {
     }
   }, []);
 
-  // async function submit(draft: VacationDraft) {
-  //   try {
-  //     if (vacationId) {
-  //       setIsSubmitting(true);
-
-  //       if (draft.vacationImage && typeof draft.vacationImage !== "string") {
-  //         draft.vacationImage = (draft.vacationImage as unknown as FileList)[0];
-  //       }
-
-  //       const payload: VacationDraft & { vacationId: string } = {
-  //         ...draft,
-  //         vacationId: vacationId,
-  //       };
-
-  //       const updatedVacation = await vacationsService.update(
-  //         vacationId,
-  //         payload
-  //       );
-  //       dispatch(update(updatedVacation));
-  //       showToast.success(`Vacation to ${updatedVacation.destination} updated`);
-  //       navigate("/vacations");
-  //     }
-  //   } catch (err) {
-  //     if (axios.isAxiosError(err)) {
-  //       showToast.error(err.response?.data || "Something went wrong");
-  //     } else {
-  //       showToast.error("Something went wrong");
-  //     }
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // }
   async function submit(draft: VacationDraft) {
     try {
       if (vacationId) {

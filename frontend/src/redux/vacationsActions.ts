@@ -52,7 +52,11 @@ export const vacationsSlice = createSlice({
         if (!vacation.followers) {
           vacation.followers = [];
         }
-        if (!vacation.followers.some((f) => f.id === action.payload.user.id)) {
+        if (
+          !vacation.followers.some(
+            (f) => f.userId === action.payload.user.userId
+          )
+        ) {
           vacation.followers.push(action.payload.user);
         }
       }
@@ -67,7 +71,7 @@ export const vacationsSlice = createSlice({
       if (index > -1 && state.vacations[index].followers) {
         state.vacations[index].followers = state.vacations[
           index
-        ].followers.filter((f) => f.id !== action.payload.user.id);
+        ].followers.filter((f) => f.userId !== action.payload.user.userId);
       }
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
