@@ -1,0 +1,45 @@
+.Layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0 0 16px 16px;
+}
+
+main {
+  padding: 40px 30px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  margin: 20px 0;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  color: #6c757d;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px 16px 0 0;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 25px 15px;
+  }
+  header {
+    padding: 15px 20px;
+  }
+  footer {
+    padding: 15px;
+  }
+}
