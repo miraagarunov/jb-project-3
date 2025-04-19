@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import AppError from "../../errors/app-error";
 import { StatusCodes } from "http-status-codes";
 import socket from "../../io/io";
-import SocketMessages from "../../../../lib/socket-enums/src/socket-enums";
 import { Follow } from "../../models/follow";
+import SocketMessages from "../../../../lib/socket-enums/src/socket-enums";
 
 export async function followVacation(
   req: Request<{ vacationId: string }>,

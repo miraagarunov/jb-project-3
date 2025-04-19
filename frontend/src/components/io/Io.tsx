@@ -1,7 +1,7 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { useAppDispatch } from "../../redux/hooks";
-import { io } from "socket.io-client";
+import io from "socket.io-client";
 import SocketMessages from "../../../../lib/socket-enums/src/socket-enums";
 import Vacation from "../../models/vacation/Vacation";
 import User from "../../models/user/User";
@@ -30,57 +30,49 @@ export default function Io(props: PropsWithChildren): JSX.Element {
   useEffect(() => {
     const socket = io(import.meta.env.VITE_IO_SERVER_URL);
 
-    socket.onAny((eventName, payload) => {
-      console.log(eventName, payload);
-
-      if (payload?.from !== xClientId) {
-        switch (eventName) {
-          case SocketMessages.ADD_VACATION: {
-            const newVacationPayload = payload?.data as Vacation;
-            if (newVacationPayload) {
-              dispatch(newVacation(newVacationPayload));
-            }
-            break;
-          }
-          case SocketMessages.REMOVE_VACATION: {
-            const deleteVacationPayload = payload?.data as {
-              vacationId: string;
-            };
-            if (deleteVacationPayload) {
-              dispatch(remove(deleteVacationPayload));
-            }
-            break;
-          }
-          case SocketMessages.UPDATE_VACATION: {
-            const updateVacationPayload = payload?.data as Vacation;
-            if (updateVacationPayload) {
-              dispatch(update(updateVacationPayload));
-            }
-            break;
-          }
-          case SocketMessages.FOLLOW_VACATION: {
-            const followVacationsPayload = payload?.data as {
-              vacationId: string;
-              user: User;
-            };
-            if (followVacationsPayload) {
-              dispatch(followVacation(followVacationsPayload));
-            }
-            break;
-          }
-          case SocketMessages.UNFOLLOW_VACATION: {
-            const unfollowVacationsPayload = payload?.data as {
-              vacationId: string;
-              user: User;
-            };
-            if (unfollowVacationsPayload) {
-              dispatch(unfollowVacation(unfollowVacationsPayload));
-            }
-            break;
-          }
-        }
+    socket.on(SocketMessages.ADD_VACATION, (payload: { data: Vacation }) => {
+      const newVacationPayload = payload?.data;
+      if (newVacationPayload) {
+        dispatch(newVacation(newVacationPayload));
       }
     });
+
+    socket.on(
+      SocketMessages.REMOVE_VACATION,
+      (payload: { data: { vacationId: string } }) => {
+        const deleteVacationPayload = payload?.data;
+        if (deleteVacationPayload) {
+          dispatch(remove(deleteVacationPayload));
+        }
+      }
+    );
+
+    socket.on(SocketMessages.UPDATE_VACATION, (payload: { data: Vacation }) => {
+      const updateVacationPayload = payload?.data;
+      if (updateVacationPayload) {
+        dispatch(update(updateVacationPayload));
+      }
+    });
+
+    socket.on(
+      SocketMessages.FOLLOW_VACATION,
+      (payload: { data: { vacationId: string; user: User } }) => {
+        const followVacationsPayload = payload?.data;
+        if (followVacationsPayload) {
+          dispatch(followVacation(followVacationsPayload));
+        }
+      }
+    );
+
+    socket.on(
+      SocketMessages.UNFOLLOW_VACATION,
+      (payload: { data: { vacationId: string; user: User } }) => {
+        const unfollowVacationsPayload = payload?.data;
+        if (unfollowVacationsPayload) {
+          dispatch(unfollowVacation(unfollowVacationsPayload));
+        }
+      }
+    );
 
     return () => {
       socket.disconnect();

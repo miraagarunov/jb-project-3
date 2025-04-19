@@ -2,9 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import AppError from "../../errors/app-error";
 import { StatusCodes } from "http-status-codes";
 import socket from "../../io/io";
-import SocketMessages from "../../../../lib/socket-enums/src/socket-enums";
 import { Vacation } from "../../models/vacation";
 import { User } from "../../models/user";
+import SocketMessages from "../../../../lib/socket-enums/src/socket-enums";
 
 export async function getAllVacations(
   req: Request,
