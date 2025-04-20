@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import socket from "../../io/io";
 import { Vacation } from "../../models/vacation";
 import { User } from "../../models/user";
-import SocketMessages from "../../../../lib/socket-enums/src/socket-enums";
+import SocketMessages from "../../../lib/socket-enums/src/socket-enums";
 
 export async function getAllVacations(
   req: Request,
