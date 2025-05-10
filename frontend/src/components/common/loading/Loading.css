@@ -1,0 +1,50 @@
+.Loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.Loading .small,
+.Loading .medium,
+.Loading .large {
+  border-radius: 50%;
+  border-top: 3px solid rgba(255, 255, 255, 0.8);
+  border-right: 3px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+  border-left: 3px solid transparent;
+  animation: spin 1.2s linear infinite;
+  display: inline-block;
+  background: none;
+  position: relative;
+}
+
+.Loading .small {
+  width: 24px;
+  height: 24px;
+}
+
+.Loading .medium {
+  width: 48px;
+  height: 48px;
+}
+
+.Loading .large {
+  width: 96px;
+  height: 96px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

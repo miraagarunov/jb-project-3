@@ -1,0 +1,114 @@
+.Login,
+.SignUp {
+  max-width: 480px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 48px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", "Poppins", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.Login h2,
+.SignUp h2 {
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.Login form,
+.SignUp form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Login input,
+.SignUp input {
+  padding: 16px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  color: #111827;
+  transition: border-color 0.3s ease;
+}
+
+.Login input:focus,
+.SignUp input:focus {
+  border-color: #4688e5;
+  outline: none;
+  background-color: #fff;
+}
+
+.Login button,
+.SignUp button {
+  background-color: #4688e5;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 20px rgba(70, 136, 229, 0.2);
+}
+
+.Login button:hover,
+.SignUp button:hover {
+  background-color: #3b6fc2;
+  transform: translateY(-2px);
+}
+
+.Login button:active,
+.SignUp button:active {
+  transform: translateY(0);
+}
+
+.Login h6,
+.SignUp h6 {
+  text-align: center;
+  margin: 30px 0 15px;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #4688e5;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-link:hover {
+  color: #355f98;
+}
+
+@media (max-width: 768px) {
+  .Login,
+  .SignUp {
+    padding: 32px 24px;
+    margin: 30px auto;
+  }
+
+  .Login h2,
+  .SignUp h2 {
+    font-size: 1.6rem;
+  }
+
+  .Login button,
+  .SignUp button {
+    padding: 14px;
+  }
+}
